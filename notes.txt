@@ -1,0 +1,10 @@
+two traffic lights, a queue for each traffic light 
+
+when a light is green, it's corresponding queue should be empty
+
+if a light is red, it's queue is checked regularly for cars waiting
+
+if there are cars, the other light is turned red and the current light is turned green
+
+every time there the state of the lights change, there is a 5 second buffer to avoid the lights instantly switching back and forth during high volume traffic
+
