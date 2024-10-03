@@ -1,22 +1,21 @@
 class TrafficLight:
-    def __init__(self):
-        """
-        :light_colour: str value. Set to red by default
-        :traffic: int value. 0 if no traffic at the light, 1 if there is
-        """
-        self.light_colour = "red"
-        self.traffic = 0
+    def __init__(self, number: int, light_colour="red", traffic=False):
+        self.number = number
+        self.light_colour = light_colour
+        self.traffic = traffic
     
-    def getLightColour(self) -> str:
+    def get_light_colour(self) -> str:
         return self.light_colour
 
-    def setLightColour(self, light_colour: str):
+    def set_light_colour(self, light_colour: str):
         self.light_colour = light_colour
     
-    def getTraffic(self) -> bool:
+    def get_traffic(self) -> bool:
         return self.traffic
     
-    def setTraffic(self, traffic: bool):
+    def set_traffic(self, traffic: bool):
         self.traffic = traffic
 
+    def __str__(self):
+        return f"light {str(self.number)}"
     

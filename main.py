@@ -1,26 +1,29 @@
 from TrafficLight import TrafficLight
+from Junction import Junction
 import time
 import random
 
-def checkRedLight(lightOne: TrafficLight, lightTwo: TrafficLight) -> TrafficLight:
-    """
-    returns the red light
-    """
-    if lightOne.getLightColour == "red":
-        return lightOne
-    return lightTwo
- 
-def updateRedLight():
-    redLight = checkRedLight()
-    return random.randint(0,1)
-
-
-
 #main program
-lightOne = TrafficLight()
-lightTwo = TrafficLight()
-lightOne.setLightColour("green")
+lightOne = TrafficLight(1)
+lightTwo = TrafficLight(2)
+lightOne.set_light_colour("green")
+junction = Junction(lightOne, lightTwo)
 
-for i in range(10):
-    redLight = checkRedLight(lightOne, lightTwo)
+while True: 
+    #initial state of traffic
+    print(f"{junction}")
+
+    #if the red light has traffic, it'll switch the traffic lights
+    redLight = junction.check_red_light()
+    if redLight.get_traffic():
+        print(f"\nTRAFFIC DETECTED AT {redLight}:\n{junction}")
+        junction.toggle(redLight)
+    else:
+        time.sleep(3)
+
+    #attempt at spawning traffic at the red light
+    junction.update_traffic()
+
     
+    print("END============================================END\n")
+
